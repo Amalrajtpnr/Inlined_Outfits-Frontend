@@ -8,49 +8,78 @@ import { AiOutlineMinus } from "react-icons/ai";
 
 function PersonalDetails() {
   const [isActive, setIsActive] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  function handleUpdate() {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name:username, email, phone }),
+    })
+      .then((response) => response.json())
+
+      .then((data) => {
+        if (!data.error) {
+          console.log(data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
 
   return (
-    <div className="h-screen bg-white flex flex-col items-center justify-start overflow-y-scroll overflow-hidden scrollbar-hide">
+    <div className="h-screen bg-white flex flex-col items-center justify-start overflow-y-scroll overflow-hidden scrollbar-hide ">
       <Navbar />
       <div className="w-full h-full flex flex-row items-center justify-center">
         <div className="w-[40%] h-full  flex flex-col items-start justify-start ">
           <h1 className="text-lg text-black font-semibold">
             Personal Information
           </h1>
-          <div className="w-full h-[10%] flex flex-row items-center justify-between ">
+          <div className="w-full h-[8%] flex flex-row items-center justify-between ">
             <input
               type="text"
               placeholder="First Name"
+              onChange={e=>setUsername(e.target.value)}
               className="w-[48%] h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
             />
-
+{/* 
             <input
               type="text"
               placeholder="Last Name"
               className="w-[48%] h-full border border-gray-400 text-xs mt-6 p-3 outline-none box-border rounded-[15px] "
-            />
+            /> */}
           </div>
           <h1 className="text-lg text-black font-semibold mt-8">
             Email Address
           </h1>
-          <div className="w-full h-[10%] flex flex-row items-center justify-between ">
+          <div className="w-full h-[8%] flex flex-row items-center justify-between ">
             <input
               type="text"
               placeholder="example@gmail.com"
+              onChange={e=>setEmail(e.target.value)}
+
               className="w-[48%] h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
             />
           </div>
           <h1 className="text-lg text-black font-semibold mt-8">
             Phone Number
           </h1>
-          <div className="w-full h-[10%] flex flex-row items-center justify-between ">
+          <div className="w-full h-[8%] flex flex-row items-center justify-between ">
             <input
               type="text"
               placeholder=" Phone Number"
+              onChange={e=>setPhone(e.target.value)}
+
               className="w-[48%] h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
             />
           </div>
-          <div className="w-[20%] h-[8%] rounded-[10px]  bg-black flex flex-col items-center justify-center mt-16">
+          <div onClick={handleUpdate} className="w-[20%] h-[8%] rounded-[10px]  bg-black flex flex-col items-center justify-center mt-16">
             <h1 className="text-[15px] text-white font-semibold ">Update</h1>
           </div>
         </div>
@@ -174,7 +203,7 @@ function PersonalDetails() {
                     <div className="w-[30%] h-[50%] flex flex-row items-center justify-around ">
                       <input
                         type="radio"
-                        placeholder=" Landmark(Optional)"
+                        // placeholder=" Landmark(Optional)"
                         className="w-[48%] h-full border border-gray-400 text-xs outline-none  rounded-[15px]"
                       />
                       <h1 className="text-[12px] font-medium">Home</h1>
@@ -182,7 +211,6 @@ function PersonalDetails() {
                     <div className="w-[25%] h-[50%] flex flex-row items-center justify-around ">
                       <input
                         type="radio"
-                        placeholder=" Landmark(Optional)"
                         className="w-[48%] h-full border border-gray-400 text-xs outline-none  rounded-[15px]"
                       />
                       <h1 className="text-[12px] font-medium">Work</h1>

@@ -4,6 +4,8 @@ import Colour from "../../components/Colour";
 import Size from "../../components/Size";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import TypeOfSpec from "../../components/TypeOfSpec";
+import Image from "next/image";
+
 
 export default function index() {
   return (
@@ -11,12 +13,12 @@ export default function index() {
       <Navbar />
       <div className="w-[100%] h-[85%] flex flex-row items-center justify-center">
         <div className="w-[50%] h-full  flex flex-col items-center justify-start ">
-          <img src="/Rectangle 19.svg" className="w-[70%] h-[75%] " alt="" />
+          <Image src="/Rectangle 19.svg"  width={20} height={20} className="w-[70%] h-[75%] " alt="" />
           <div className="w-[55%] h-[20%] flex flex-row items-center justify-start pl-[14px] box-border">
-            <img src="/Rectangle 19.svg" className="w-[15%] h-[45%]" alt="" />
-            <img src="/Rectangle 19.svg" className="w-[15%] h-[45%] " alt="" />
-            <img src="/Rectangle 19.svg" className="w-[15%] h-[45%] " alt="" />
-            <img src="/Rectangle 19.svg" className="w-[15%] h-[45%] " alt="" />
+            <Image src="/Rectangle 19.svg" width={20} height={20} className="w-[15%] h-[45%]" alt="" />
+            <Image src="/Rectangle 19.svg"  width={20} height={20} className="w-[15%] h-[45%] " alt="" />
+            <Image src="/Rectangle 19.svg"  width={20} height={20}  className="w-[15%] h-[45%] " alt="" />
+            <Image src="/Rectangle 19.svg"  width={20} height={20}  className="w-[15%] h-[45%] " alt="" />
           </div>
         </div>
         <div className="w-[50%] h-full  flex flex-col items-start justify-start ">
