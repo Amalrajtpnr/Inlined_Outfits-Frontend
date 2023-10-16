@@ -7,16 +7,15 @@ import { IoCallOutline } from "react-icons/io5";
 import { HiOutlineKey } from "react-icons/hi";
 import { passwordRegex } from "../constants/constants";
 import { useAppContext } from "../contexts/AppContexts";
-
-
+import { FaBars } from "react-icons/fa";
 
 function Navbar() {
   const router = useRouter();
   const [isadmin, setIsAdmin] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [register, setRegister] = useState(false);
-  // const [user, setUser] = useState({});
-  const {user,setUser}=useAppContext()
+  const [navigator, setNavigator] = useState(false);
+  const { user, setUser } = useAppContext();
 
   type state = {
     email: string;
@@ -147,11 +146,11 @@ function Navbar() {
         if (!data.error) {
           setRegister(false);
           localStorage.setItem("user", JSON.stringify(data));
-          setUser(data)
+          setUser(data);
 
           console.log(data);
-        }else{
-          setError(data.error)
+        } else {
+          setError(data.error);
         }
       })
       .catch((error) => {
@@ -182,11 +181,15 @@ function Navbar() {
   }, []);
 
   return (
-    <div className="w-screen min-h-[15%]  flex flex-row items-center justify-between">
+    <div className="w-screen min-h-[15%]  flex flex-row items-center justify-between lg:p-0 sm300:p-3">
       <div className="w-[20%] h-full   flex flex-row items-center justify-center">
-        <img src="/In&O.svg" className="w-[50%] h-[50%]" alt="" />
+        <img
+          src="/In&O.svg"
+          className="lg:w-[50%] sm300:w-[100%] h-[50%]"
+          alt=""
+        />
       </div>
-      <div className="w-[50%] h-full px-[20px]  flex flex-row items-center justify-around">
+      <div className="w-[50%] h-full px-[20px]  lg:flex sm300:hidden flex-row items-center justify-around">
         <h1
           style={{
             borderBottom: router.pathname === "/" ? "solid 2px black" : "white",
@@ -250,6 +253,59 @@ function Navbar() {
           <h1 className="text-white text-sm font-medium ml-3">Cart</h1>
         </div>
       </div>
+      <div className="w-[20%] h-full lg:hidden sm300:flex flex-col items-center justify-center">
+        <FaBars size={25} onClick={() => setNavigator(!navigator)} />
+      </div>
+      {navigator && (
+        <div className="w-full h-[250px] z-[100] fixed top-24 left-0 right-0 bg-white flex flex-col items-center justify-center">
+          <div     className="w-full h-[22%] flex flex-col items-center justify-center border-t ">
+            <h1 style={{
+            color:
+              router.pathname === "/" ? "blue" : "black",
+          }} onClick={() => router.push("/")} className="font-semibold cursor-pointer text-[15px]">Home</h1>
+          </div>
+          <div className="w-full h-[22%] flex flex-col items-center justify-center border-t ">
+            <h1   style={{
+            color:
+              router.pathname === "/shop" ? "blue" : "black",
+          }}
+          onClick={() => router.push("/shop")} className="font-semibold cursor-pointer text-[15px]">Shop</h1>
+          </div>
+          <div className="w-full h-[22%] flex flex-col items-center justify-center border-t ">
+            <h1 className="font-semibold cursor-pointer text-[15px]">
+              Contact Us
+            </h1>
+          </div>
+          <div     className="w-full h-[22%] flex flex-col items-center justify-center border-t ">
+            <h1 style={{
+            color:
+              router.pathname === "/cart" ? "blue" : "black",
+          }} onClick={() => router.push("/cart")} className="font-semibold cursor-pointer text-[15px]">Cart</h1>
+          </div>
+          <div className="w-full h-[22%] flex flex-col items-center justify-center border-t ">
+            <h1 style={{
+            color:
+              router.pathname === "/personalDetails" ? "blue" : "black",
+          }}  onClick={() => {
+                    router.push("/personalDetails");
+                  }} className="font-semibold cursor-pointer text-[15px]">
+              Profile
+            </h1>
+          </div>
+          <div className="w-full h-[22%] flex flex-col items-center justify-center border-t ">
+            <h1 className="font-semibold cursor-pointer text-[15px]">Orders</h1>
+          </div>
+          <div className="w-full h-[22%] flex flex-col items-center justify-center border-t ">
+            <h1
+              onClick={handleLogOut}
+              className="text-[#FF0000] text-[15px] font-semibold cursor-pointer"
+            >
+              {user && Object.keys(user).length > 0 ? "Log Out" : "Log In"}
+            </h1>
+          </div>
+        </div>
+      )}
+
       {signUp && (
         <div className="h-screen bg-black z-[100] fixed top-0 left-0 right-0 bg-transparent  flex flex-col items-center justify-center ">
           <div className="w-[50%] h-[60%] bg-white rounded-[30px] flex flex-row items-center justify-center p-[40px] box-border ">

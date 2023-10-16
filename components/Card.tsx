@@ -30,7 +30,7 @@ function Card({
   return (
     <div
       onClick={onClick}
-      className="w-[260px] h-[485px] flex flex-col items-start justify-start  cursor-pointer"
+      className="w-[260px] h-[485px] flex flex-col items-start justify-start  cursor-pointer sm300:mt-4 lg:mt-0"
     >
       <Image
         width={150}

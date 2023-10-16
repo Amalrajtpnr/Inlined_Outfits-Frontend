@@ -8,6 +8,7 @@ import { AiOutlineMinus } from "react-icons/ai";
 import { useAppContext } from "../../contexts/AppContexts";
 import { IoCallOutline, IoCloseCircleOutline } from "react-icons/io5";
 import { BsCheck2Circle } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 type Address = {
   name: string;
@@ -22,6 +23,7 @@ type Address = {
 };
 
 function Checkout() {
+  const router = useRouter();
   const [isActive, setIsActive] = useState(false);
   const [address, setAddress] = useState<Address>({} as Address);
   const { user, setUser } = useAppContext();
@@ -176,14 +178,17 @@ function Checkout() {
   return (
     <div className="h-screen bg-white flex flex-col items-center justify-start overflow-y-scroll overflow-hidden scrollbar-hide">
       <Navbar />
-      <div className="w-full min-h-[85%] flex flex-row items-center justify-center overflow-y-scroll scrollbar-hide">
-        <div className="w-[60%] h-full flex flex-col items-start justify-start  overflow-y-scroll scrollbar-hide ">
+      <div className="w-full min-h-[85%] flex lg:flex-row sm300:flex-col items-center lg:justify-center sm300:justify-between overflow-y-scroll scrollbar-hide">
+        <div className="lg:w-[60%] lg:h-full sm300:w-full sm300:h-[80%]  flex flex-col items-start justify-start  overflow-y-scroll scrollbar-hide sm300:p-4 lg:p-0  box-border">
           <h1 className="text-[22px] text-black font-semibold ">
             Delivery Address
           </h1>
-          <div className="w-full min-h-[40%] flex flex-col items-start justify-around ">
-            {user?.addresses?.map((address: any,i:any) => (
-              <div key={i} className="w-[30%] h-[90%] rounded-[20px] border border-gray-400  flex flex-col items-center justify-around  ">
+          <div className="w-full lg:min-h-[40%] sm300:min-h-[70%] flex flex-col items-start justify-around   ">
+            {user?.addresses?.map((address: any, i: any) => (
+              <div
+                key={i}
+                className="lg:w-[30%] sm300:w-[70%] lg:h-[90%] sm300:h-[70%] rounded-[20px] border border-gray-400  flex flex-col items-center justify-around"
+              >
                 <MdHome size={40} color="grey" />
                 <h1 className="text-[15px] text-black font-normal">
                   {address.name}
@@ -213,7 +218,7 @@ function Checkout() {
               <h1 className="text-[15px] text-black font-normal">9876543210</h1>{" "}
             </div> */}
           </div>
-          <div className="w-[65%] min-h-[10%]  flex flex-col items-start justify-start border border-gray-400 rounded-[20px] p-[20px] overflow-y-scroll scrollbar-hide">
+          <div className="lg:w-[65%] sm300:w-[100%] lg:min-h-[10%]  flex flex-col items-start justify-start border border-gray-400 rounded-[20px] p-[20px] lg:overflow-y-scroll lg:scrollbar-hide">
             <div className="w-[100%] h-[100%]   flex flex-row items-center justify-between">
               <h1 className="text-[18px] text-black font-medium">
                 Add a new address
@@ -236,7 +241,7 @@ function Checkout() {
             </div>
 
             {isActive && (
-              <div className="min-h-[500px] w-[100%]  flex flex-col items-start justify-between mt-3 ">
+              <div className="lg:min-h-[500px]   w-[100%] flex flex-col items-start justify-between mt-3 ">
                 <div className="w-full h-[10%] flex flex-row items-center justify-between ">
                   <input
                     value={address.name}
@@ -335,7 +340,7 @@ function Checkout() {
                     className="w-[48%] h-full border border-gray-400 text-xs mt-6 p-3 outline-none box-border rounded-[15px] "
                   />
                 </div>
-                <div className="w-[50%] h-[10%] flex flex-row items-center justify-between ">
+                {/* <div className="w-[50%] h-[10%] flex flex-row items-center justify-between ">
                   <h1 className="text-[12px] font-medium">Address Type</h1>
                   <div className="w-[30%] h-[50%] flex flex-row items-center justify-around ">
                     <input
@@ -353,7 +358,7 @@ function Checkout() {
                     />
                     <h1 className="text-[12px] font-medium">Work</h1>
                   </div>
-                </div>
+                </div> */}
                 <div className="w-full h-[9%] flex flex-row items-center justify-end ">
                   <button
                     onClick={() => {
@@ -363,7 +368,7 @@ function Checkout() {
                         addAddress();
                       }
                     }}
-                    className="w-[25%] h-full text-[12px] font-medium bg-black text-white rounded-lg  flex flex-row items-center justify-center"
+                    className="lg:w-[25%] sm300:w-[40%] h-full text-[12px] font-medium bg-black text-white rounded-lg  flex flex-row items-center justify-center"
                   >
                     Save and Continue
                   </button>
@@ -372,7 +377,7 @@ function Checkout() {
             )}
           </div>
         </div>
-        <div className="w-[26%] h-full flex flex-col items-start justify-start  border ">
+        <div className="w-[26%] h-full lg:flex sm300:hidden flex-col items-start justify-start  border ">
           <div className="w-[100%] h-[80%] rounded-[15px] border border-gray-400  flex flex-col items-start justify-around pl-[70px] p-[30px] ">
             <h1 className="text-[22px] text-black font-semibold">
               Price Details
@@ -426,19 +431,40 @@ function Checkout() {
             </div>
           </div>
         </div>
+        <div className="sm300:w-full sm300:h-[20%] lg:hidden flex flex-row items-center justify-around  border border-black">
+          <div className="w-[30%] h-full flex flex-row items-center justify-around ">
+            <h1 className="text-[15px] text-black font-normal ">Total=</h1>
+            <h1 className="text-[15px] text-black font-normal ">
+              ${totalAmount}
+            </h1>
+          </div>
+          <div className="w-[60%] h-full flex flex-row items-center justify-around ">
+            <div
+              onClick={placeOrder}
+              className="w-[60%] h-[40%] cursor-pointer rounded-xl bg-black flex flex-row items-center justify-around "
+            >
+              <h1 className="text-[15px] text-white font-normal ">
+                Proceed to pay
+              </h1>
+            </div>
+          </div>
+        </div>
       </div>
       {checkOut && (
-        <div className="h-screen bg-black z-[100] fixed top-0 left-0 right-0 bg-transparent  flex flex-col items-center justify-center ">
-          <div className="w-[30%] h-[50%] border-dashed border-2 border-green-400 bg-gray-100 rounded-[30px] flex flex-col items-center justify-start p-[40px] box-border ">
+        <div className="h-screen  bg-black z-[100] fixed top-0 left-0 right-0 bg-transparent  flex flex-col items-center justify-center ">
+          <div className="lg:w-[30%] sm300:w-[80%] lg:h-[50%] border-dashed border-2 border-green-400 bg-gray-100 rounded-[30px] flex flex-col items-center justify-start p-[40px] box-border ">
             <div className="w-full h-[10%] flex flex-col items-end justify-center  ">
               <IoCloseCircleOutline
-                onClick={() => setCheckOut(false)}
-                size={32}
+                onClick={() => {
+                  setCheckOut(false);
+                  router.push("/");
+                }}
+                size={35}
               />
             </div>
             <div className="w-[90%] h-[70%] flex flex-col items-center  justify-center ">
-              <BsCheck2Circle color="green" size={80} />
-              <h1 className="font-medium text-[20px]">
+              <BsCheck2Circle color="green" size={85} />
+              <h1 className="font-medium text-[20px] text-center">
                 Your order has placed sucessfully
               </h1>
             </div>

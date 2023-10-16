@@ -145,8 +145,8 @@ export default function ShopItem({ productId }: { productId: any }) {
   return (
     <div className="h-screen bg-white flex flex-col items-center justify-start overflow-y-scroll overflow-hidden scrollbar-hide">
       <Navbar />
-      <div className="w-[100%] h-[85%] flex flex-row items-center justify-center overflow-y-scroll scrollbar-hide">
-        <div className="w-[50%] h-full  flex flex-col items-center justify-start ">
+      <div className="w-[100%] h-[85%] flex lg:flex-row sm300:flex-col items-center justify-center overflow-y-scroll scrollbar-hide">
+        <div className="lg:w-[50%] lg:h-full sm300:w-full sm300:h-[50%]  flex flex-col items-center justify-start ">
           <img src="/Rectangle 19.svg" className="w-[70%] h-[75%] " alt="" />
           <div className="w-[55%] h-[20%] flex flex-row items-center justify-start pl-[14px] box-border">
             <img src="/Rectangle 19.svg" className="w-[15%] h-[45%]" alt="" />
@@ -155,14 +155,14 @@ export default function ShopItem({ productId }: { productId: any }) {
             <img src="/Rectangle 19.svg" className="w-[15%] h-[45%] " alt="" />
           </div>
         </div>
-        <div className="w-[50%] h-full  flex flex-col items-start justify-start ">
+        <div className="lg:w-[50%] lg:h-full sm300:w-full sm300:h-[50%] lg:p-0 sm300:p-8 box-border  flex flex-col items-start justify-start ">
           <h1 className="text-2xl  text-black font-bold  tracking-wider">
             {collection?.name}
           </h1>
           <h1 className="text-[16px] text-[#000000a6] font-light my-1">
             {collection.description}
           </h1>
-          <div className="w-full h-[8%] flex flex-row items-center justify-start ">
+          <div className="w-full h-[8%] flex flex-row items-center justify-start lg:mt-0 sm300:mt-3">
             <h1 className="font-medium text-[23px] ">
               {" "}
               $&nbsp;{collection?.price?.original}
@@ -179,7 +179,7 @@ export default function ShopItem({ productId }: { productId: any }) {
             </h1>
           </div>
 
-          <h1 className="text-[15px] font-medium mt-2     ">Colours</h1>
+          <h1 className="text-[15px] font-medium lg:mt-2  sm300:mt-5    ">Colours</h1>
           <div className="h-[50px] w-[200px]  flex justify-between items-center my-2 ">
             {collection?.colors?.map((item: any, i: number) => (
               <Colour
@@ -226,10 +226,10 @@ export default function ShopItem({ productId }: { productId: any }) {
               +
             </button>
           </div>
-          <div className="w-full min-h-[8%] mb-4 flex flex-row justify-start items-center ">
+          <div className="w-full lg:min-h-[8%] sm300:min-h-[15%] mb-4 flex flex-row justify-start items-center ">
             <div
               onClick={(e) => addToCart(e, productId)}
-              className="w-[20%] h-full bg-black rounded-[10px] flex flex-row justify-center items-center "
+              className=" lg:w-[20%] sm300:w-[40%] lg:h-full sm300:h-full bg-black rounded-[10px] flex flex-row justify-center items-center "
             >
               <AiOutlineShoppingCart size={20} color="white" />
 
@@ -237,7 +237,7 @@ export default function ShopItem({ productId }: { productId: any }) {
                 Add to Cart
               </h1>
             </div>
-            <div  onClick={(e) => buy(e, productId)} className="w-[20%] h-full border-[1px] border-black rounded-[10px] flex flex-row justify-center items-center  ml-4">
+            <div  onClick={(e) => buy(e, productId)} className="lg:w-[20%] sm300:w-[40%] lg:h-full sm300:h-full border-[1px] border-black rounded-[10px] flex flex-row justify-center items-center  ml-4">
               <h1 className="text-[12px]  text-black font-semibold ml-2">
                 Buy Now
               </h1>
@@ -249,7 +249,7 @@ export default function ShopItem({ productId }: { productId: any }) {
             </span>
           )}
           <h1 className="text-[18px] font-medium mt-3     ">Specifications</h1>
-          <div className="min-h-[300px] w-[70%]  mb-5">
+          <div className="lg:min-h-[300px] sm300:w-[100%] sm300:min-h-[400px]  lg:w-[70%]  lg:mb-5">
             <div className="h-[100%] w-[100%] flex flex-col justify-start items-center">
               <div className="h-[25%] w-[100%] border-t-[1px] border-[#00000025] flex justify-start items-center">
                 <TypeOfSpec Spec="Type" SpecDetails="Round Neck" />

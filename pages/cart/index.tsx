@@ -9,7 +9,7 @@ function Cart() {
   const [cartItems, setCartItems] = useState<any>({});
   const [totalAmount, setTotalAmount] = useState<number>(0);
   const [discount, setDiscount] = useState<number>(0);
-  const [items, setItems] = useState<any>({})
+  const [items, setItems] = useState<any>({});
 
   const getCart = async () => {
     const user = JSON.parse(localStorage.getItem("user")!);
@@ -58,13 +58,13 @@ function Cart() {
   return (
     <div className="h-screen bg-white flex flex-col items-center justify-start overflow-y-scroll overflow-hidden scrollbar-hide">
       <Navbar />
-      <div className="w-full min-h-[85%] flex flex-row items-center justify-start overflow-y-scroll scrollbar-hide">
-        <div className="w-[60%] h-full flex flex-col items-center justify-start  overflow-y-scroll scrollbar-hide ">
+      <div className="w-full min-h-[85%] flex lg:flex-row sm300:flex-col items-center justify-start overflow-y-scroll scrollbar-hide">
+        <div className="lg:w-[60%]  h-full flex flex-col items-center justify-start  overflow-y-scroll scrollbar-hide ">
           {cartItems?.products?.map((item: any, i: number) => (
             <CartItems key={i} collection={item} />
           ))}
         </div>
-        <div className="w-[40%] h-full flex flex-col items-start justify-start   ">
+        <div className="w-[40%] h-full sm300:hidden lg:flex flex-col items-start justify-start   ">
           <div className="w-[70%] h-[85%] rounded-[15px] border border-black flex flex-col items-start justify-start p-[40px] ">
             <h1 className="text-[22px] text-black font-semibold">Delivery</h1>
             <h1 className="text-[15px] text-black font-normal mt-4">
@@ -102,20 +102,39 @@ function Cart() {
             </div>
             <div className="w-[80%] h-[1px] border-dashed border border-black mt-2"></div>
             <div
-            onClick={() => {
-              if (totalAmount > 10) {
-                router.push("/checkout");
-              } else {
-                return;
-              }
-            }}
-              className="w-[60%] h-[10%] bg-black rounded-[10px] flex flex-row items-center justify-center mt-8 ml-8"
+              onClick={() => {
+                if (totalAmount > 10) {
+                  router.push("/checkout");
+                } else {
+                  return;
+                }
+              }}
+              className="w-[60%] h-[10%] bg-black rounded-[10px] flex flex-row items-center justify-center cursor-pointer mt-8 ml-8"
             >
               <AiOutlineShoppingCart size={20} color="white" />
 
               <h1 className="text-white font-semibold text-[14px] ml-3">
                 Proceed to Checkout
               </h1>
+            </div>
+          </div>
+        </div>
+        <div className="sm300:w-full sm300:h-[20%] lg:hidden flex flex-row items-center justify-around  border border-black">
+          <div className="w-[30%] h-full flex flex-row items-center justify-around ">
+            <h1 className="text-[15px] text-black font-normal ">Total=</h1>
+            <h1 className="text-[15px] text-black font-normal ">
+              ${totalAmount}
+            </h1>
+          </div>
+          <div className="w-[60%] h-full flex flex-row items-center justify-around ">
+            <div   onClick={() => {
+                if (totalAmount > 10) {
+                  router.push("/checkout");
+                } else {
+                  return;
+                }
+              }} className="w-[60%] h-[40%] cursor-pointer rounded-xl bg-black flex flex-row items-center justify-around ">
+              <h1 className="text-[15px] text-white font-normal ">Continue</h1>
             </div>
           </div>
         </div>

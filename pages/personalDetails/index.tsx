@@ -36,17 +36,17 @@ function PersonalDetails() {
   return (
     <div className="h-screen bg-white flex flex-col items-center justify-start overflow-y-scroll overflow-hidden scrollbar-hide ">
       <Navbar />
-      <div className="w-full h-full flex flex-row items-center justify-center">
-        <div className="w-[40%] h-full  flex flex-col items-start justify-start ">
+      <div className="w-full h-full flex lg:flex-row sm300:flex-col items-center justify-center sm300:p-4 box-border lg:p-0">
+        <div className="lg:w-[40%] sm300:w-full sm300:min-h-[45%] lg:h-full  flex flex-col lg:items-start  justify-start ">
           <h1 className="text-lg text-black font-semibold">
             Personal Information
           </h1>
-          <div className="w-full h-[8%] flex flex-row items-center justify-between ">
+          <div className="w-full lg:h-[8%]  flex flex-row items-center justify-between ">
             <input
               type="text"
               placeholder="First Name"
               onChange={e=>setUsername(e.target.value)}
-              className="w-[48%] h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
+              className="lg:w-[48%] sm300:w-[100%] h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
             />
 {/* 
             <input
@@ -58,35 +58,35 @@ function PersonalDetails() {
           <h1 className="text-lg text-black font-semibold mt-8">
             Email Address
           </h1>
-          <div className="w-full h-[8%] flex flex-row items-center justify-between ">
+          <div className="w-full lg:h-[8%] flex flex-row items-center justify-between ">
             <input
               type="text"
               placeholder="example@gmail.com"
               onChange={e=>setEmail(e.target.value)}
 
-              className="w-[48%] h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
+              className="lg:w-[48%] sm300:w-[100%]  h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
             />
           </div>
           <h1 className="text-lg text-black font-semibold mt-8">
             Phone Number
           </h1>
-          <div className="w-full h-[8%] flex flex-row items-center justify-between ">
+          <div className="w-full lg:h-[8%] flex flex-row items-center justify-between ">
             <input
               type="text"
               placeholder=" Phone Number"
               onChange={e=>setPhone(e.target.value)}
 
-              className="w-[48%] h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
+              className="lg:w-[48%] sm300:w-[100%]  h-full border border-gray-400 text-xs outline-none mt-6 p-3 box-border rounded-[15px]"
             />
           </div>
           <div onClick={handleUpdate} className="w-[20%] h-[8%] rounded-[10px]  bg-black flex flex-col items-center justify-center mt-16">
             <h1 className="text-[15px] text-white font-semibold ">Update</h1>
           </div>
         </div>
-        <div className="w-[50%] h-full  flex flex-col items-center justify-start  ml-5">
+        <div className="lg:w-[50%] sm300:w-full lg:h-full sm300:min-h-[50%]  flex flex-col items-center justify-start  ml-5">
           <div className="w-full min-h-[45%] flex flex-row items-start justify-start  ">
-            <div className="w-[35%] h-[90%] rounded-[20px] border border-gray-400  flex flex-col items-center justify-center ">
-              <div className="w-[95%] h-[10%] flex flex-col items-end justify-center  -mt-10 mb-7">
+            <div className="lg:w-[35%] lg:h-[90%] rounded-[20px] border border-gray-400  flex flex-col items-center justify-center ">
+              <div className="w-[95%] h-[10%] flex flex-col items-end justify-center  lg:-mt-10 lg:mb-7">
                 <MdDelete size={30} />
               </div>
               <MdHome size={40} color="grey" />
@@ -99,7 +99,7 @@ function PersonalDetails() {
               <h1 className="text-[15px] text-black font-normal">670307</h1>{" "}
               <h1 className="text-[15px] text-black font-normal">9876543210</h1>{" "}
             </div>
-            <div className="w-[35%] h-[90%] rounded-[20px] border border-gray-400   flex flex-col items-center justify-center ml-8">
+            {/* <div className="w-[35%] h-[90%] rounded-[20px] border border-gray-400   flex flex-col items-center justify-center ml-8">
               <div className="w-[95%] h-[10%] flex flex-col items-end justify-center  -mt-10 mb-7">
                 <MdDelete size={30} />
               </div>
@@ -112,7 +112,7 @@ function PersonalDetails() {
               </h1>{" "}
               <h1 className="text-[15px] text-black font-normal">670307</h1>{" "}
               <h1 className="text-[15px] text-black font-normal">9876543210</h1>{" "}
-            </div>
+            </div> */}
           </div>
           <div className="w-full h-[90%]  flex flex-col items-start justify-start">
             <div className="w-[75%] min-h-[10%]  flex flex-col items-start justify-start border border-gray-400 rounded-[20px] p-[20px] ">
