@@ -21,6 +21,7 @@ export default function Home() {
     try {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/products`, {
         headers: {
+          method:"GET",
           "Content-Type": "application/json",
         },
       })
@@ -41,7 +42,7 @@ export default function Home() {
     <div className="h-screen bg-white flex flex-col items-center justify-start overflow-y-scroll overflow-hidden scrollbar-hide">
       <Navbar />
       <div className="w-[100%] min-h-[85%]   flex flex-col items-center justify-start  relative ">
-        <div className="w-full h-[90%]   bg-black">
+        <div className="w-full h-[90%]  flex flex-row items-center justify-start  bg-black">
           <div className="w-[50%] h-full flex flex-col items-start justify-center px-[120px] ml-16">
             <h1 className="text-[65px] text-white font-museo tracking-wider">
               Fashion Up Your Looks

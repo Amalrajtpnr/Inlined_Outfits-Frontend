@@ -97,7 +97,7 @@ function Cart() {
             <div className="w-[80%] h-[7%] flex flex-row items-center justify-between  mt-2">
               <h1 className="text-[15px] text-black font-normal ">Total</h1>
               <h1 className="text-[15px] text-black font-normal ">
-                ₹{totalAmount ? totalAmount + 2 : "0"}
+                ${totalAmount ? totalAmount + 2 : "0"}
               </h1>
             </div>
             <div className="w-[80%] h-[1px] border-dashed border border-black mt-2"></div>

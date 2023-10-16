@@ -6,13 +6,17 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
 import { HiOutlineKey } from "react-icons/hi";
 import { passwordRegex } from "../constants/constants";
+import { useAppContext } from "../contexts/AppContexts";
+
+
 
 function Navbar() {
   const router = useRouter();
   const [isadmin, setIsAdmin] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [register, setRegister] = useState(false);
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
+  const {user,setUser}=useAppContext()
 
   type state = {
     email: string;
@@ -143,8 +147,11 @@ function Navbar() {
         if (!data.error) {
           setRegister(false);
           localStorage.setItem("user", JSON.stringify(data));
+          setUser(data)
 
           console.log(data);
+        }else{
+          setError(data.error)
         }
       })
       .catch((error) => {
@@ -295,6 +302,11 @@ function Navbar() {
                 >
                   Login
                 </button>
+                {/* {error >0 && (
+            <span className="text-[11px] font-medium text-red-500">
+              colours and size are required
+            </span>
+          )} */}
                 <h1 className="text-black text-[12px] font-normal">
                   New to In&O ?
                   <span
