@@ -182,8 +182,8 @@ function Checkout() {
             Delivery Address
           </h1>
           <div className="w-full min-h-[40%] flex flex-col items-start justify-around ">
-            {user?.addresses?.map((address: any) => (
-              <div className="w-[30%] h-[90%] rounded-[20px] border border-gray-400  flex flex-col items-center justify-around  ">
+            {user?.addresses?.map((address: any,i:any) => (
+              <div key={i} className="w-[30%] h-[90%] rounded-[20px] border border-gray-400  flex flex-col items-center justify-around  ">
                 <MdHome size={40} color="grey" />
                 <h1 className="text-[15px] text-black font-normal">
                   {address.name}
