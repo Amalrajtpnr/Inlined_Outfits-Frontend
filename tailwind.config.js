@@ -17,6 +17,11 @@ module.exports = {
         ds: "0px 0px 210px 68px rgba(255,255,255,1)",
         modal_header: "0px 0px 36px rgba(0, 0, 0, 0.25)",
       },
+      animation: {
+        flicker: "flicker 3s linear infinite",
+        shimmer: "shimmer 1.3s linear infinite",
+        rotate: "rotate 1.3s linear infinite",
+      },
       screens: {
         sm300: "300px",
         sm400: "400px",

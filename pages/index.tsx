@@ -15,24 +15,30 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter();
 
+  const [loading, setloading] = useState<boolean>(false);
+
   const [products, setProducts] = useState<any>([]);
 
   const getProducts = async () => {
+    setloading(true);
     try {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/products`, {
+        method: "GET", // Correct the method here
         headers: {
-          method: "GET",
           "Content-Type": "application/json",
         },
       })
         .then((res) => res.json())
         .then((data) => {
           setProducts(data);
+          setloading(false); // Set loading to false when the data is received
         });
     } catch (error) {
       console.log(error);
+      setloading(false); // Set loading to false in case of an error
     }
   };
+  
 
   useEffect(() => {
     getProducts();
@@ -53,7 +59,7 @@ export default function Home() {
             </h1>
             <div
               onClick={() => {
-                router.push("/shop/productDetails");
+                router.push("/shop");
               }}
               className="lg:w-[35%] sm300:w-[40%] lg:h-[7%] sm300:h-[12%] rounded-[10px] flex flex-col items-center justify-center  cursor-pointer bg-white mt-6"
             >
@@ -71,7 +77,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <LatestTrends products={products} />
+      <LatestTrends loading={loading} products={products} />
       <About />
       <Footer />
     </div>

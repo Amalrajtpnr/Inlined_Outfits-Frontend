@@ -11,6 +11,8 @@ type AppContext = {
   setUser: Dispatch<SetStateAction<any>>;
   authType: "login" | "signup";
   setAuthType: Dispatch<SetStateAction<"login" | "signup">>;
+  loading: boolean;
+  setLoading:Dispatch<SetStateAction<boolean>>
 };
 
 const appContext = React.createContext<AppContext>({} as AppContext);
@@ -18,12 +20,15 @@ const appContext = React.createContext<AppContext>({} as AppContext);
 function AppContextProvider({ children }: { children: React.ReactNode | any }) {
   const [user, setUser] = useState<any>({});
   const [authType, setAuthType] = useState<"login" | "signup">("login");
+  const [loading, setLoading] = useState<boolean>(true);
 
   const value = {
     user,
     setUser,
     authType,
     setAuthType,
+    loading,
+    setLoading,
   };
 
   useEffect(() => {

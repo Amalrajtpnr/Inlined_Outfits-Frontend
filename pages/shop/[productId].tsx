@@ -147,12 +147,12 @@ export default function ShopItem({ productId }: { productId: any }) {
       <Navbar />
       <div className="w-[100%] h-[85%] flex lg:flex-row sm300:flex-col items-center justify-center overflow-y-scroll scrollbar-hide">
         <div className="lg:w-[50%] lg:h-full sm300:w-full sm300:h-[50%]  flex flex-col items-center justify-start ">
-          <img src="/Rectangle 19.svg" className="w-[70%] h-[75%] " alt="" />
+          <img src={"/" + collection.images} className="w-[70%] h-[75%] " alt="" />
           <div className="w-[55%] h-[20%] flex flex-row items-center justify-start pl-[14px] box-border">
-            <img src="/Rectangle 19.svg" className="w-[15%] h-[45%]" alt="" />
-            <img src="/Rectangle 19.svg" className="w-[15%] h-[45%] " alt="" />
-            <img src="/Rectangle 19.svg" className="w-[15%] h-[45%] " alt="" />
-            <img src="/Rectangle 19.svg" className="w-[15%] h-[45%] " alt="" />
+            <img src={"/" + collection.images} className="w-[15%] h-[45%]" alt="" />
+            <img src={"/" + collection.images} className="w-[15%] h-[45%] " alt="" />
+            <img src={"/" + collection.images} className="w-[15%] h-[45%] " alt="" />
+            <img src={"/" + collection.images} className="w-[15%] h-[45%] " alt="" />
           </div>
         </div>
         <div className="lg:w-[50%] lg:h-full sm300:w-full sm300:h-[50%] lg:p-0 sm300:p-8 box-border  flex flex-col items-start justify-start ">

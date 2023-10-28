@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-
 type props = {
   image: string;
   nameofT: string;
@@ -25,8 +24,6 @@ function Card({
   const router = useRouter();
   const [post, setPost] = useState("");
 
-
-
   return (
     <div
       onClick={onClick}
@@ -35,21 +32,19 @@ function Card({
       <Image
         width={150}
         height={120}
-        className="w-full "
-        src="/Rectangle 10.svg"
+        className="w-full"
+        src={"/" + image} // Add the forward slash here
         alt=""
       />
       <h1 className="text-[18px]  text-black font-[700]">{nameofT}</h1>
-      <h1 className="text-[14px]  text-black font-normal ">
-      {details}
-      </h1>
+      <h1 className="text-[14px]  text-black font-normal ">{details}</h1>
       <div className="w-full h-[10%]  flex flex-row items-center justify-start">
         <h1 className="text-[13px]  text-black font-[600]  ">Rs{realprice}</h1>
         <h1 className="font-medium text-[11px] text-[#00000094] line-through ml-6 ">
           Rs{realprice}
         </h1>
         <h1 className="font-semibold text-[11px] text-[#FF0000]  ml-6 ">
-        {offprice}off
+          {offprice}off
         </h1>
       </div>
     </div>
